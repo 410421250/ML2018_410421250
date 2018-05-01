@@ -24,7 +24,20 @@ for y in range(height):
         data[y*400+x][2] =  k2.getpixel((x,y))
         e_arr[y*400+x] =  e.getpixel((x,y))
   
+w = np.array([0,0,0]) # 1x3 array
 
+stop = False
+epoch = 1
+print(  w[0] , w[1] , w[2] )
+while not stop:
+    grad = [0, 0, 0]
+    stop = True
+    for i, x in enumerate(data): 
+            temp = w[0] * data[i][0] + w[1] * data[i][1] + w[2] * data[i][2]
+            w = w + 0.00001 *(e_arr[i] - temp) * x
+
+    print(w[0], w[1], w[2])
+    epoch += 1
 
 
 

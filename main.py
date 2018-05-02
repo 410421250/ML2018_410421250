@@ -8,8 +8,8 @@ import scipy.misc
 k1 = Image.open("key1.png")
 k2 = Image.open("key2.png")
 I = Image.open("I.png")
-e  = Image.open("Eprime.png")
-ee  = Image.open("e.png")
+e  = Image.open("E.png")
+ee  = Image.open("Eprime.png")
 
 #image input
 
@@ -41,7 +41,7 @@ temp_w2 = 5
 
 epoch = 1
 print(  w[0] , w[1] , w[2] )
-while epoch < maxlimit and abs(w[0] - temp_w0) > 0.0001 and abs(w[1] - temp_w1) > 0.0001 and abs(w[2] - temp_w2) > 0.0001:
+while epoch < maxlimit and abs(w[0] - temp_w0) > 0.00001 and abs(w[1] - temp_w1) > 0.00001 and abs(w[2] - temp_w2) > 0.00001:
     
     temp_w0 = w[0]
     temp_w1 = w[1]
@@ -60,7 +60,7 @@ while epoch < maxlimit and abs(w[0] - temp_w0) > 0.0001 and abs(w[1] - temp_w1) 
 ima = np.zeros((300,400),int)
 for y in range(height):
     for x in range(width):
-        ima[y][x] = (e.getpixel((x,y)) - w[1] *k1.getpixel((x,y)) -w[2] * k2.getpixel((x,y)))/w[0]
+        ima[y][x] = (ee.getpixel((x,y)) - w[1] *k1.getpixel((x,y)) -w[2] * k2.getpixel((x,y)))/w[0]
         
         
     

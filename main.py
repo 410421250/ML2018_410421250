@@ -1,5 +1,7 @@
 from PIL import Image
 import numpy as np
+import scipy.misc
+
 
 
 
@@ -39,7 +41,13 @@ while not stop:
     print(w[0], w[1], w[2])
     epoch += 1
 
+ima = np.zeros((300,400),int)
+for y in range(height):
+    for x in range(width):
+        ima[y][x] = (e.getpixel((x,y)) - w[1] *k1.getpixel((x,y)) -w[2] * k2.getpixel((x,y)))/w[0]
+    
 
+scipy.misc.imsave('outfile.jpg', ima)
 
         
 

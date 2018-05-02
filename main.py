@@ -28,12 +28,21 @@ for y in range(height):
   
 w = np.array([0,0,0]) # 1x3 array
 
+maxlimit = 10
+temp_w0 = 5
+temp_w1 = 5
+temp_w2 = 5
+
+
 stop = False
 epoch = 1
 print(  w[0] , w[1] , w[2] )
-while not stop:
-    grad = [0, 0, 0]
-    stop = True
+while epoch < maxlimit and abs(w[0] - temp_w0) > 0.001 and abs(w[1] - temp_w1) > 0.001 and abs(w[2] - temp_w2) > 0.001:
+    
+    temp_w0 = w[0]
+    temp_w1 = w[1]
+    temp_w2 = w[2]
+    
     for i, x in enumerate(data): 
             temp = w[0] * data[i][0] + w[1] * data[i][1] + w[2] * data[i][2]
             w = w + 0.00001 *(e_arr[i] - temp) * x

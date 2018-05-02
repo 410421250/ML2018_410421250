@@ -20,11 +20,13 @@
 
 (d)
 
-![image](https://github.com/410421250/ML2018_410421250/blob/master/outfile.jpg)
+![image](https://github.com/410421250/ML2018_410421250/blob/master/outfile2.jpg)
 
 
 
 (e)把圖片存成陣列的時候遇到了一些問題，下載了pil套件才解決，第一玉遇到LMS演算法時對陣的運算錯誤，後來才有修改。
+
+    最後發現要用Eprime來做最後圖片的解碼，難怪之前解碼的圖片都畫質不好，以為是演算法的問題，幸好最後有找到問題
 
 
 (f)學到了如何上傳code到github上及矩陣和圖片的應用和LMS及PLA演算法。

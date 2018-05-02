@@ -5,12 +5,13 @@ import scipy.misc
 
 
 
-
 k1 = Image.open("key1.png")
 k2 = Image.open("key2.png")
 I = Image.open("I.png")
 e  = Image.open("Eprime.png")
 ee  = Image.open("e.png")
+
+#image input
 
 print ( k1.format , k1.size , k1.mode )
 
@@ -25,6 +26,8 @@ for y in range(height):
         data[y*400+x][1] =  k1.getpixel((x,y))
         data[y*400+x][2] =  k2.getpixel((x,y))
         e_arr[y*400+x] =  e.getpixel((x,y))
+        
+#image to array 
   
 w = np.array([0,0,0]) # 1x3 array
 
@@ -33,11 +36,12 @@ temp_w0 = 5
 temp_w1 = 5
 temp_w2 = 5
 
+#set param
 
-stop = False
+
 epoch = 1
 print(  w[0] , w[1] , w[2] )
-while epoch < maxlimit and abs(w[0] - temp_w0) > 0.001 and abs(w[1] - temp_w1) > 0.001 and abs(w[2] - temp_w2) > 0.001:
+while epoch < maxlimit and abs(w[0] - temp_w0) > 0.0001 and abs(w[1] - temp_w1) > 0.0001 and abs(w[2] - temp_w2) > 0.0001:
     
     temp_w0 = w[0]
     temp_w1 = w[1]
@@ -49,14 +53,22 @@ while epoch < maxlimit and abs(w[0] - temp_w0) > 0.001 and abs(w[1] - temp_w1) >
 
     print(w[0], w[1], w[2])
     epoch += 1
+    
+    
+#LMS
 
 ima = np.zeros((300,400),int)
 for y in range(height):
     for x in range(width):
         ima[y][x] = (e.getpixel((x,y)) - w[1] *k1.getpixel((x,y)) -w[2] * k2.getpixel((x,y)))/w[0]
+        
+        
     
 
 scipy.misc.imsave('outfile.jpg', ima)
+
+#array to png
+
 
         
 
